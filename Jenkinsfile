@@ -7,13 +7,7 @@ pipeline {
     }
 
     triggers {
-        GenericTrigger causeString: 'Github Webhook',
-                       genericVariables: [
-                           [defaultValue: '', key: 'GITHUB_ACTION', regexpFilter: '', value: '$.action'],
-                           [defaultValue: '', key: 'GITHUB_PROJECT', regexpFilter: '', value: '$.pull_request.base.repo.full_name'],
-                           [defaultValue: '', key: 'GITHUB_PR_NUMBER', regexpFilter: '', value: '$.pull_request.number']
-                       ],
-                       token: 'jenkins-trigger'
+        GenericTrigger causeString: 'Github Webhook', genericVariables: [[defaultValue: '', key: 'GITHUB_ACTION', regexpFilter: '', value: '$.action'], [defaultValue: '', key: 'GITHUB_PROJECT', regexpFilter: '', value: '$.pull_request.base.repo.full_name'], [defaultValue: '', key: 'GITHUB_PR_NUMBER', regexpFilter: '', value: '$.pull_request.number']], token: 'jenkins-trigger'
 }
 
     stages {

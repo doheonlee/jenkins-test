@@ -7,9 +7,9 @@ from github import Github
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PullRequest approval checker")
-    parser.add_argument("-p", "--project",  action="store", type=str, help="Github Project",            required=True)
-    parser.add_argument("-n", "--pr-num",   action="store", type=int, help="Github PullRequest Number", required=True)
-    parser.add_argument("-a", "--accounts", action="store", type=str, help="Github Accounts for skip clearing")
+    parser.add_argument("-p", "--project",  action="store",  type=str, help="Github Project",            required=True)
+    parser.add_argument("-n", "--pr-num",   action="store",  type=int, help="Github PullRequest Number", required=True)
+    parser.add_argument("-a", "--accounts", action="extend", type=str, help="Github Accounts for skip clearing", nargs="+")
 
     return parser.parse_args()
 

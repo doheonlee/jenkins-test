@@ -7,9 +7,9 @@ from github import Github
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PullRequest approval checker")
-    parser.add_argument("-p", "--project", action="store",  type=str, help="Github Project",            required=True)
-    parser.add_argument("-n", "--pr-num",  action="store",  type=int, help="Github PullRequest Number", required=True)
-    parser.add_argument("-a", "--account", action="append", type=str, help="Github Account for skip clearing")
+    parser.add_argument("-p", "--project",  action="store", type=str, help="Github Project",            required=True)
+    parser.add_argument("-n", "--pr-num",   action="store", type=int, help="Github PullRequest Number", required=True)
+    parser.add_argument("-a", "--accounts", action="store", type=str, help="Github Accounts for skip clearing")
 
     return parser.parse_args()
 
@@ -31,6 +31,7 @@ if __name__ == "__main__":
 
     # Parse Github project, PR Number and reviewer account(s) from arguments
     parsed_args = parse_args()
+    print(parsed_args)
     reviews = get_reviews(github_access_token, parsed_args.project, parsed_args.pr_num)
     print(f"Review count : {reviews.totalCount}")
     for review in reviews:

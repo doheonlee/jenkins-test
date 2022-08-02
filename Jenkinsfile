@@ -41,7 +41,7 @@ bot2 ''',
                     pwd
                     ls -alh
                     which python3.9
-                    /usr/local/bin/python3.9 github_pr_checker.py --project ${env.GITHUB_PROJECT} --pr-num ${env.GITHUB_PR_NUMBER}
+                    /usr/local/bin/python3.9 github_pr_checker.py --project ${env.GITHUB_PROJECT} --pr-num ${env.GITHUB_PR_NUMBER} --accounts ${params.SKIP_ACCOUNT}
                 """
             }
         }

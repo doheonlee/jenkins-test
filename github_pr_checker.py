@@ -4,6 +4,7 @@ import argparse
 import os
 
 from github import Github
+from github import GithubException
 
 def parse_args():
     parser = argparse.ArgumentParser(description="PullRequest approval checker")
@@ -51,7 +52,7 @@ if __name__ == "__main__":
         print(f"[DISMISS] ID: {review.id}, USER_LOGIN: {review.user.login}")
         try:
             review.dismiss("Branch is updated, existing approvals will be dismissed")
-        except github.GithubException.GithubException as e:
+        except GithubException as e:
             print("[ERROR] Failed to dismiss review {review.id}", file=sys.stderr)
             print("[ERROR] " + str(e), file=sys.stderr)
     pass

@@ -49,5 +49,9 @@ if __name__ == "__main__":
 
     for review in approved_reviews:
         print(f"[DISMISS] ID: {review.id}, USER_LOGIN: {review.user.login}")
-        review.dismiss("Branch is updated, existing approvals will be dismissed")
+        try:
+            review.dismiss("Branch is updated, existing approvals will be dismissed")
+        except github.GithubException.GithubException as e:
+            print("[ERROR] Failed to dismiss review {review.id}", file=sys.stderr)
+            print("[ERROR] " + str(e), file=sys.stderr)
     pass

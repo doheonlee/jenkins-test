@@ -36,5 +36,5 @@ if __name__ == "__main__":
     for review in reviews:
         #review.dismiss("updated")
         # review.delete()
-        print(review.state)
+        print(f"ID: {review.id}, USER_LOGIN: {review.user.login}, USER_NAME: {review.user.name}, STATE: {review.state}")
     pass

@@ -50,7 +50,6 @@ if __name__ == "__main__":
 
     # Parse Github project, PR Number and reviewer account(s) from arguments
     parsed_args = parse_args()
-    print(parsed_args)
     reviews = get_reviews(github_access_token, parsed_args.project, parsed_args.pr_num)
     approved_reviews = get_approved_reviews(reviews, parsed_args.accounts)
 

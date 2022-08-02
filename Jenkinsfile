@@ -37,7 +37,9 @@ bot2 ''',
                 GITHUB_ACCESS_TOKEN = credentials("github-access-token")
             }
             steps {
-                def skip_accounts = params.SKIP_ACCOUNT.replace("\n", " ")
+                script {
+                    def skip_accounts = params.SKIP_ACCOUNT.replace("\n", " ")
+                }
                 sh """
                     pwd
                     ls -alh

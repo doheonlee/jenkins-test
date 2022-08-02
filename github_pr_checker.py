@@ -1,5 +1,11 @@
 #!/usr/bin/env python3.9
 
+#
+# Pull-Request 에 있는 Review 중, APPROVED 인 경우에만 해당 Review 를 Dismiss 하도록 구성되었습니다.
+# Project, PullRequest Number, Account 를 매개변수로 입력받으며, 해당 프로젝트의 PullRequest 에서 삭제를 진행하며,
+# Account 로 입력받은 ID 인 경우에는 Dismiss 하지 않습니다.
+#
+
 import argparse
 import os
 import sys
@@ -49,6 +55,7 @@ if __name__ == "__main__":
     reviews = get_reviews(github_access_token, parsed_args.project, parsed_args.pr_num)
     approved_reviews = get_approved_reviews(reviews, parsed_args.accounts)
 
+    # Dismiss approved reviews
     for review in approved_reviews:
         print(f"[DISMISS] ID: {review.id}, USER_LOGIN: {review.user.login}")
         try:

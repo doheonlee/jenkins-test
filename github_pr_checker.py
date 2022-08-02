@@ -2,6 +2,7 @@
 
 import argparse
 import os
+import sys
 
 from github import Github
 from github import GithubException

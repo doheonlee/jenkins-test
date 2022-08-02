@@ -13,8 +13,12 @@ def parse_args():
 
     return parser.parse_args()
 
-def get_reviews():
-    pass
+def get_reviews(github_access_token, project, pr_num):
+    github_client = Github(github_access_token)
+    repo = github_client.get_repo(project)
+    pr = repo.get_pull(pr_num)
+
+    return pr.get_reviews()
     
 if __name__ == "__main__":
     # Get github access token from Jenkins credentials store
@@ -27,11 +31,9 @@ if __name__ == "__main__":
 
     # Parse Github project, PR Number and reviewer account(s) from arguments
     parsed_args = parse_args()
-    g = Github(github_access_token)
-    repo = g.get_repo(parsed_args.project)
-    pr = repo.get_pull(parsed_args.pr_num)
-    print(pr.get_reviews().totalCount)
-    for review in pr.get_reviews():
+    reviews = get_reviews(github_access_token, parsed_args.project, parsed_args.pr_num)
+    print(f"Review count : {reviews.totalCount}")
+    for review in reviews:
         #review.dismiss("updated")
         # review.delete()
         print(review.state)

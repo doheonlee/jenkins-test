@@ -24,7 +24,7 @@ def get_approved_reviews(reviews, accounts):
     approved_reviews = []
     for review in reviews:
         if review.user.login in accounts:
-            print(f"Skip dismissing {review.user.login}"
+            print(f"Skip dismissing {review.user.login}")
             continue
         #if review.state == "APPROVED"
         #    approved_reviews.append(review)

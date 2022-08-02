@@ -1,7 +1,7 @@
 pipeline {
     agent {
-        dockerfile {
-            filename 'Dockerfile'
+        docker {
+            image 'intovortex/python:3.9'
             label "local"
         }
     }
